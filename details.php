@@ -227,7 +227,7 @@ echo "<p>&#8226 Gi&#7889ng: ".$giong."</p>";
 echo "<p>&#8226 Lo&#224i: ".$loai."</p>";
 $temp9 = $conn1->query("select Anh from loaica where Loai_ID like '".$loai_id."'")->fetch_assoc();
 $anh = $db."/".implode('',$temp9);
-echo ("<img style=\"max-width:450px; max-height:300px\" src=".$anh." /><br><br>");
+echo ("<img style=\"max-width:450px; max-height:300px; \" src=".$anh." /><br><br>");
 
 
 ?>

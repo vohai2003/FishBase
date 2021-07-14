@@ -20,8 +20,9 @@ tr:nth-child(even) {background-color: #f2f2f2}
 </style>
 </head>
 <body>
-<form action="" method="post">
-<label>Tìm</label><input type="text"name="search" value=''/>
+<h1 style='text-align:center;'>CCOV:Tìm kiếm</h1>
+<form action="" method="post" style='text-align:center;'>
+<label style="font-size:200%;">Tìm</label><input style='position:relative; left:2px; width:300px;' type="text"name="search" value=''/>
 <form action="" method="post">
   <label for="Timkiem">trong:</label>
   <select name="Timkiem" id="cars">
@@ -48,15 +49,19 @@ if ($conn1->connect_error) {
   die("Connection failed: ".$conn1->connect_error);
  }
 mysqli_set_charset($conn1, 'UTF8');
-$search = $_POST['search'];
-$option = $_POST['Timkiem'];
+$search = mysqli_real_escape_string($conn1,$_POST['search']);
+$option = mysqli_real_escape_string($conn1,$_POST['Timkiem']);
 $sql = "select * from loaica where ".$option." like '%".$search."%'";
 $result1 = $conn1->query($sql);
+echo ("<br>");
+if ($search != ''){
+echo ("Có ".$result1->num_rows." kết quả");
 if ($result1->num_rows > 0) {
   while ($row = $result1->fetch_assoc()) {
        echo "<tr><td><a href='details.php?db=CCOV&id=".$row["Loai_ID"]."'>". $row["TenVN"]. "</a></td><td>". $row["TenKH"]. "</td><td>". $row["TenEnglish"]. "</td></tr>";
        }
 	   echo "</table>";
+}
 }
 $conn1->close();
 ?>
