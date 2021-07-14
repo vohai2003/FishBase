@@ -16,7 +16,8 @@ th {
 background-color: #588c7e;
 color: white;
 }
-tr:nth-child(even) {background-color: #f2f2f2}
+tr:nth-of-type(even) {background-color: #f0f0f0}
+tr:hover {background-color: #c0c0c0}
 </style>
     </head>
     <body>
@@ -39,7 +40,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
 			$result = mysqli_query($conn,'select * from hoca where Bo_ID like \''.$_GET['bo'].'\';');
 			if ($result -> num_rows >0) {
 					while ($row = $result -> fetch_assoc()){
-						 echo "<tr><td><a href='timkiem.php?db=".$dbname."&ho=".$row["Ho_ID"]."'>". $row["TenVN"]. "</a></td><td>". $row["TenKH"]. "</td></tr>";
+						 echo "<tr><td><a href='timkiem.php?db=".$dbname."&ho=".$row["Ho_ID"]."'><div>". $row["TenVN"]. "</div></a></td><td>". $row["TenKH"]. "</td></tr>";
 					}
 					echo "</table>";
 				}
@@ -47,7 +48,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
 			$result = mysqli_query($conn,'select * from giong where Ho_ID like \''.$_GET['ho'].'\';');	
 			if ($result -> num_rows >0) {
 					while ($row = $result -> fetch_assoc()){
-						 echo "<tr><td><a href='timkiem.php?db=".$dbname."&giong=".$row["Giong_ID"]."'>". $row["TenVN"]. "</a></td><td>". $row["TenKH"]. "</td></tr>";
+						 echo "<tr><td><a href='timkiem.php?db=".$dbname."&giong=".$row["Giong_ID"]."'><div>". $row["TenVN"]. "</div></a></td><td>". $row["TenKH"]. "</td></tr>";
 					}
 					echo "</table>";
 				}
@@ -55,7 +56,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
 			$result = mysqli_query($conn,'select * from loaica where Giong_ID like \''.$_GET['giong'].'\';');
 			if ($result -> num_rows >0) {
 					while ($row = $result -> fetch_assoc()){
-						 echo "<tr><td><a href='details.php?db=".$dbname."&id=".$row["Loai_ID"]."'>". $row["TenVN"]. "</a></td><td>". $row["TenKH"]. "</td></tr>";
+						 echo "<tr><td><a href='details.php?db=".$dbname."&id=".$row["Loai_ID"]."'><div>". $row["TenVN"]. "</div></a></td><td>". $row["TenKH"]. "</td></tr>";
 					}
 					echo "</table>";
 				}
@@ -63,7 +64,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
 				$result = mysqli_query($conn,'select * from boca;');
 				if ($result -> num_rows >0) {
 					while ($row = $result -> fetch_assoc()){
-						 echo "<tr><td><a href='timkiem.php?db=".$dbname."&bo=".$row["Bo_ID"]."'>". $row["TenVN"]. "</a></td><td>". $row["TenKH"]. "</td></tr>";
+						 echo "<tr><td><a href='timkiem.php?db=".$dbname."&bo=".$row["Bo_ID"]."'><div>". $row["TenVN"]. "</div></a></td><td>". $row["TenKH"]. "</td></tr>";
 					}
 					echo "</table>";
 				}

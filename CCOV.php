@@ -16,7 +16,8 @@ th {
 background-color: #588c7e;
 color: white;
 }
-tr:nth-child(even) {background-color: #f2f2f2}
+tr:nth-of-type(even) {background-color: #f0f0f0}
+tr:hover {background-color: #c0c0c0}
 </style>
 </head>
 <body>
@@ -30,7 +31,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
     <option value="TenEnglish">Tên tiếng anh</option>
     <option value="TenKH">Tên khoa học</option>
   </select>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" style="width=100px">
 <br><br>
 <a href='timkiem.php?db=CCOV'>Tìm kiếm theo bộ - họ - giống - loài</a>
 <table>
@@ -58,10 +59,13 @@ if ($search != ''){
 echo ("Có ".$result1->num_rows." kết quả");
 if ($result1->num_rows > 0) {
   while ($row = $result1->fetch_assoc()) {
-       echo "<tr><td><a href='details.php?db=CCOV&id=".$row["Loai_ID"]."'>". $row["TenVN"]. "</a></td><td>". $row["TenKH"]. "</td><td>". $row["TenEnglish"]. "</td></tr>";
+       echo "<tr><td><a href='details.php?db=CCOV&id=".$row["Loai_ID"]."'><div>". $row["TenVN"]. "</div></a></td><td>". $row["TenKH"]. "</td><td>". $row["TenEnglish"]. "</td></tr>";
        }
 	   echo "</table>";
 }
+}
+else {
+	echo("<br>Ô tìm kiếm rỗng");
 }
 $conn1->close();
 ?>
