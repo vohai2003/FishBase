@@ -178,7 +178,7 @@ function rtf2text($filename) {
 }
 ?>
 <?php
-require 'C:/inetpub/wwwroot/include/u-convert/autoload.php';
+require './include/u-convert/autoload.php';
 use Anhskohbo\UConvert\UConvert;
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
