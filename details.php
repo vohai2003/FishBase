@@ -10,6 +10,17 @@
  font-weight:normal;
  font-style:normal;
 }
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 </style>
 </head>
 <body>
@@ -201,6 +212,8 @@ $temp5 = $conn1->query("select TenKH from giong where Giong_ID like '".$giong_id
 $temp6 = $conn1->query("select TenKH from boca where Bo_ID like '".$bo_id."'")->fetch_assoc();
 $temp7 = $conn1->query("select TenKH from hoca where Ho_ID like '".$ho_id."'")->fetch_assoc();
 $temp8 = $conn1->query("select TenVN from loaica where Loai_ID like '".$loai_id."'")->fetch_assoc();
+$temp9 = $conn1->query("select Anh from loaica where Loai_ID like '".$loai_id."'")->fetch_assoc();
+$anh = $db."/".implode('',$temp9);
 $loai = implode('',$temp4);
 $giong = implode('',$temp5);
 $bo = implode('',$temp6);
@@ -211,6 +224,8 @@ $temp9 = $conn1->query("select Anh from loaica where Loai_ID like '".$loai_id."'
 $anh = $db."/".implode('',$temp9);
 $textfile = pathinfo($db.'/'.$anh, PATHINFO_FILENAME);
 $textfile = strval((int)$textfile);
+echo ("<div class='row'>");
+echo ("<div class='column'>");
 if ($db == "MFOV" or $db == "FFOV"){
 $textvar = rtf2text("document/".$db."/".$textfile.".RTF");
 $textvar = UConvert::toUnicode($textvar, UConvert::VNI);
@@ -220,15 +235,14 @@ echo $textvar;
 	$textvar = UConvert::toUnicode($textvar, UConvert::VNI);
 	echo $textvar;
 }
+echo ("</div><div class='column'>");
 echo "<p>Ph&#226n lo&#7841i:</p>";
 echo "<p>&#8226 B&#7897: ".$bo."</p>";
 echo "<p>&#8226 H&#7885: ".$ho."</p>";
 echo "<p>&#8226 Gi&#7889ng: ".$giong."</p>";
-echo "<p>&#8226 Lo&#224i: ".$loai."</p>";
-$temp9 = $conn1->query("select Anh from loaica where Loai_ID like '".$loai_id."'")->fetch_assoc();
-$anh = $db."/".implode('',$temp9);
+echo "<p>&#8226 Lo&#224i: <i>".$loai."</i></p>";
 echo ("<img style=\"max-width:450px; max-height:300px; \" src=".$anh." /><br><br>");
-
+echo ("</div>");
 
 ?>
 </body>
