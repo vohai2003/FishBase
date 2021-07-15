@@ -4,6 +4,16 @@
 <meta charset="UTF-8" />
 <title>FFOV</title>
 <style>
+a:link {
+	color: black;
+	background-color: transparent;
+	text-decoration:none;
+}
+a:visited {
+	color: purple;
+	background-color: #94FFE1;
+	text-decoration:none;
+}
 table {
 border-collapse: collapse;
 width: 100%;
@@ -18,10 +28,11 @@ color: white;
 }
 tr:nth-of-type(even) {background-color: #f0f0f0}
 tr:hover {background-color: #c0c0c0}
+td { font: 20px Times New Roman, serif; color: black }
 </style>
 </head>
 <body>
-<h1 style='text-align:center;'>FFOV:Tìm kiếm</h1>
+<h1 style='text-align:center;'>Cá nước ngọt Việt Nam (FFOV) :Tìm kiếm</h1>
 <form action="" method="post" style='text-align:center;'>
 <label style="font-size:200%;">Tìm</label><input style='position:relative; left:2px; width:300px;' type="text"name="search" value=''/>
 <form action="" method="post">
@@ -59,7 +70,7 @@ if ($search != ''){
 echo ("Có ".$result1->num_rows." kết quả");
 if ($result1->num_rows > 0) {
   while ($row = $result1->fetch_assoc()) {
-       echo "<tr><td><a href='details.php?db=FFOV&id=".$row["Loai_ID"]."'><div>". $row["TenVN"]. "</div></a></td><td>". $row["TenKH"]. "</td><td>". $row["TenEnglish"]. "</td></tr>";
+       echo "<tr><td><a href='details.php?db=FFOV&id=".$row["Loai_ID"]."'><div>". $row["TenVN"]. "</div></a></td><td><a href='details.php?db=FFOV&id=".$row["Loai_ID"]."'><div>". $row["TenKH"]. "</div></a></td><td><a href='details.php?db=FFOV&id=".$row["Loai_ID"]."'><div>". $row["TenEnglish"]. "</div></a></td></tr>";
        }
 	   echo "</table>";
 }
