@@ -211,7 +211,7 @@ $temp9 = $conn1->query("select Anh from loaica where Loai_ID like '".$loai_id."'
 $anh = $db."/".implode('',$temp9);
 $textfile = pathinfo($db.'/'.$anh, PATHINFO_FILENAME);
 $textfile = strval((int)$textfile);
-if ($db = "MFOV" or $db = "FFOV"){
+if ($db == "MFOV" or $db == "FFOV"){
 $textvar = rtf2text("document/".$db."/".$textfile.".RTF");
 $textvar = UConvert::toUnicode($textvar, UConvert::VNI);
 echo $textvar;
