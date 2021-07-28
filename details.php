@@ -226,7 +226,6 @@ $textfile = pathinfo($db.'/'.$anh, PATHINFO_FILENAME);
 $textfile = strval((int)$textfile);
 echo ("<div class='row'>");
 echo ("<div class='column'>");
-<<<<<<< HEAD
 if ($db == "FFOV") {
 readfile("document/".$db."/".$textfile.".html");
 }
@@ -239,7 +238,6 @@ echo $textvar;
 	$textvar = UConvert::toUnicode($textvar, UConvert::VNI);
 	echo $textvar;
 }}
-=======
 if ($db == "MFOV" or $db == "FFOV"){
 $textvar = rtf2text("document/".$db."/".$textfile.".RTF");
 $textvar = UConvert::toUnicode($textvar, UConvert::VNI);
@@ -249,7 +247,6 @@ echo $textvar;
 	$textvar = UConvert::toUnicode($textvar, UConvert::VNI);
 	echo $textvar;
 }
->>>>>>> 86d8bda8d57867a9f0db40f67213038d07c4535a
 echo ("</div><div class='column'>");
 echo "<p>Ph&#226n lo&#7841i:</p>";
 echo "<p>&#8226 B&#7897: ".$bo."</p>";
